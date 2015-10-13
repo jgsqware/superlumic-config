@@ -5,7 +5,7 @@
 
   tasks:
       - name: install personal applications
-        homebrew-cask: name={{item}} state=present
+        homebrew_cask: name={{item}} state=present
         with_items:
           - atom
 
