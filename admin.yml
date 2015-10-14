@@ -7,8 +7,8 @@
     - franklinkim.users-oh-my-zsh
   vars:
     users:
-      - name: Admin
-        username: admin
+      - name: Admin1
+        username: admin1
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ansible docker ruby
