@@ -4,7 +4,6 @@
   homebrew_cask: name={{item}} state=present
   with_items:
     - java
-    - firefox
 
 - name: Install Jenkins
   homebrew: name={{item}} state=present
@@ -37,6 +36,62 @@
   with_items:
     - additional-identities-plugin
     - android-emulator
+
+- name: Get latest Jenkins update file
+  get_url: url=http://updates.jenkins-ci.org/update-center.json dest=~/.jenkins/updates_jenkins.json thirsty=yes mode=0440
+  register: jenkins_updates
+  tags:
+    - jenkins
+    - jenkins-update
+
+- name: Update-center Jenkins
+  shell: "cat ~/.jenkinsjenkins/updates_jenkins.json | sed '1d;$d' | curl -X POST -H 'Accept: application/json' -d @- http://0.0.0.0:8888/updateCenter/byId/default/postBack"
+  when: jenkins_updates.changed
+  tags:
+    - jenkins
+    - jenkins-update
+
+- name: Restart Jenkins
+  command: jenkins-cli -s "http://0.0.0.0:8888/" restart
+
+- name: Wait Jenkins is started
+  command: sleep 10
+
+- name: List Jenkins plugins
+  shell: "jenkins-cli http://0.0.0.0:8888 list-plugins | cut -f 1 -d ' '"
+  when: jenkins.plugins is defined
+  register: plugins_installed
+  tags:
+    - jenkins
+    - jenkins-update
+
+- name: Install/update Jenkins plugins
+  command: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ item }}
+  when: "plugins_installed.changed and plugins_installed.stdout.find('{{ item }}') == -1"
+  with_items: jenkins.plugins
+  tags:
+    - jenkins
+    - jenkins-update
+
+- name: Restart Jenkins
+  command: jenkins-cli -s "http://0.0.0.0:8888/" restart
+
+- name: Wait Jenkins is started
+  command: sleep 10
+
+- name: List Jenkins plugins to be updated
+  shell: jenkins-cli -s http://l0.0.0.0:8888 list-plugins | grep ')$' | cut -f 1 -d ' ' | sed ':a;N;$!ba;s/\n/ /g'
+  register: plugins_updates
+  tags:
+    - jenkins
+    - jenkins-update
+
+- name: Update Jenkins plugins
+  command: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ plugins_updates.stdout }}
+  when: plugins_updates.stdout != ''
+  tags:
+    - jenkins
+    - jenkins-update
 
 - name: Restart Jenkins
   command: jenkins-cli -s "http://0.0.0.0:8888/" restart
