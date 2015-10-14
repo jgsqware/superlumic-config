@@ -1,9 +1,5 @@
 ---
-- vars:
-    jenkins:
-      - httpListenAddress: 0.0.0.0
-        httpPort: 8888
-        
+
 - name: Install Java
   homebrew_cask: name={{item}} state=present
   with_items:
@@ -18,7 +14,7 @@
   template: >
     src=homebrew-mxcl-jenkins-plist.j2
     dest=~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
-  with_items: jenkins
+  with_items: jenkins_var
 
 - name: Create symlink to jenkins LaunchAgent
   file: src=/usr/local/opt/jenkins/*.plist dest=~/Library/LaunchAgents state=link
