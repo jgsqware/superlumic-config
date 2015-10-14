@@ -1,21 +1,12 @@
 ---
-# oh-my-zsh
+- hosts: workstation
 
-- name: oh-my-zsh | Install oh-my-zsh
-  apt: name={{ item }}  state=latest update_cache=yes
-  with_items:
-   - git
-   - zsh
-   - git-core
+  tasks:
+    - name: get oh-my-zsh script
+      get_url: url=http://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh dest=/tmp/install-oh-my-zsh.sh
 
-- name: oh-my-zsh | Clone down repository
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/Users/admin/.oh-my-zsh
+    - name: change file permission to be executable
+      command: chmod +x /tmp/install-oh-my-zsh.sh
 
-- name: oh-my-zsh | Remove standard .zshrc
-  file: path=/Users/admin/.zshrc state=absent
-
-- name: oh-my-zsh | Deploy new .zshrc
-  template: src=files/zshrc.in dest=/Users/admin/.zshrc owner=admin
-
-- name: oh-my-zsh | Set zsh as default shell
-  user: name=admin shell=/bin/zsh
+    - name: install zsh
+      script: /tmp/install-oh-my-zsh.sh
