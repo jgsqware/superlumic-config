@@ -5,8 +5,8 @@
 
   roles:
     - profile-all
-    - dincubator.oh-my-zsh
     
+
   vars:
     users:
       - name: Admin
