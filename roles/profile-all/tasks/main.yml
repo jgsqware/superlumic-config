@@ -1,10 +1,19 @@
 ---
 
-- name: install cask applications for all users
+- roles:
+  - dincubator.oh-my-zsh
+  
+- name: install general applications with Cask
   homebrew_cask: name={{item}} state=present
   with_items:
-    - slack
-    - google-drive
-    - vlc
-    - keepingyouawake
+    - atom
+    - iterm2
+    - google-chrome
 
+- name: install general applications with brew
+  homebrew: name={{item}} state=present
+  with_items:
+    - wget
+
+- name: Update git config url
+  shell: git config --global url."https://".insteadOf git://
