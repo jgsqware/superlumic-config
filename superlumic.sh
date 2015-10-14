@@ -131,7 +131,7 @@ setStatusMessage "Get all the required roles"
 
 ansible-galaxy install -f -r config/requirements.yml -p roles
 
-if [ -z "$playbook"]; then
+if [ -z "$playbook" ]; then
   setStatusMessage "No given Playbook. Will use $USER playbook if exists"
   playbook=$USER
 fi
