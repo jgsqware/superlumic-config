@@ -10,6 +10,9 @@
   with_items:
     - jenkins
 
+- name: Stop Jenkins
+  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
+
 - name: Configuring jenkins LaunchAgent
   template: >
     src=homebrew-mxcl-jenkins-plist.j2
@@ -24,14 +27,14 @@
 - name: Start Jenkins
   command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
 
-# Make sure Jenkins starts, then configure Jenkins.
-- name: Ensure Jenkins is started and runs on startup.
-  service: name=jenkins state=started enabled=yes
-
-- name: Wait for Jenkins to start up before proceeding.
-  shell: "curl -D - --silent http://{{ jenkins_hostname }}:8080{{ jenkins_url_prefix }}/cli/"
-  register: result
-  until: (result.stdout.find("200 OK") != -1) and (result.stdout.find("Please wait while") == -1)
-  retries: "5"
-  delay: "60"
-  changed_when: false
+# # Make sure Jenkins starts, then configure Jenkins.
+# - name: Ensure Jenkins is started and runs on startup.
+#   service: name=jenkins state=started enabled=yes
+#
+# - name: Wait for Jenkins to start up before proceeding.
+#   shell: "curl -D - --silent http://{{ jenkins_hostname }}:8080{{ jenkins_url_prefix }}/cli/"
+#   register: result
+#   until: (result.stdout.find("200 OK") != -1) and (result.stdout.find("Please wait while") == -1)
+#   retries: "5"
+#   delay: "60"
+#   changed_when: false
