@@ -11,7 +11,7 @@
     - jenkins
 
 - name: Stop Jenkins
-  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
+  command: launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
 
 - name: Configuring jenkins LaunchAgent
   template: >
