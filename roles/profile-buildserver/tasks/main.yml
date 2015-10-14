@@ -20,3 +20,6 @@
   file: src={{ item }} dest=~/Library/LaunchAgents/{{ item | basename}} state=link force=yes
   with_fileglob:
         - /usr/local/opt/jenkins/*.plist
+
+- name: Start Jenkins
+  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
