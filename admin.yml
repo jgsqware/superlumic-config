@@ -9,6 +9,7 @@
     users:
       - name: Admin
         username: admin
+        users_group: staff
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ansible docker ruby
