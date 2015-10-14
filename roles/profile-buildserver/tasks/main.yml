@@ -9,6 +9,7 @@
   homebrew: name={{item}} state=present
   with_items:
     - jenkins
+    - groovy
 
 - name: Stop Jenkins
   command: launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
@@ -109,6 +110,8 @@
       - ws-cleanup
       - xcode-plugin
 
+- name: Cover2Cover (JaCoCo to Cobertura)
+  git: repo=https://github.com/rix0rrr/cover2cover.git dest=~/.jenkins
 # # Make sure Jenkins starts, then configure Jenkins.
 # - name: Ensure Jenkins is started and runs on startup.
 #   service: name=jenkins state=started enabled=yes
