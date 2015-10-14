@@ -4,11 +4,11 @@
   connection: local
 
   roles:
-    - franklinkim.users-oh-my-zsh
+    - dincubator.oh-my-zsh
   vars:
     users:
-      - name: Admin1
-        username: admin1
+      - name: Admin
+        username: admin
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ansible docker ruby
