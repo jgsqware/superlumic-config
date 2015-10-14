@@ -1,13 +1,6 @@
 ---
 # oh-my-zsh
-- host: all
-  roles:
-    - franklinkim.users-oh-my-zsh
-  vars:
-    users:
-      - oh_my_zsh:
-          theme: robbyrussell
-          plugins: git node brew ansible docker ruby
+  
 # - name: oh-my-zsh | Install oh-my-zsh
 #   get_url: url=http://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh dest=/tmp/install-oh-my-zsh.sh
 #

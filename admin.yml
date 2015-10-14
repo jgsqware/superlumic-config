@@ -3,6 +3,14 @@
 - hosts: 127.0.0.1
   connection: local
 
+  roles:
+    - franklinkim.users-oh-my-zsh
+  vars:
+    users:
+      - oh_my_zsh:
+        theme: robbyrussell
+        plugins: git node brew ansible docker ruby
+
   tasks:
       - name: install personal applications
         homebrew_cask: name={{item}} state=present
@@ -10,7 +18,6 @@
           - atom
           - iterm2
 
-      - include: files/ohmyzsh.yml
 
 
 # ---
