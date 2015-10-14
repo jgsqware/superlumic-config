@@ -56,6 +56,58 @@
 - name: Restart Jenkins
   command: jenkins-cli -s "http://0.0.0.0:8888/" restart
 
+- name: Wait Jenkins is started
+  command: sleep 20
+
+- name: Install Plugins
+   # command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" install-plugin {{ item }}
+   command: jenkins-cli -s "http://0.0.0.0:8888/" install-plugin {{ item }}
+   with_items:
+     - additional-identities-plugin
+     - analysis-core
+     - android-emulator
+     - android-lint
+     - ansicolor
+     - blame-upstream-commiters
+     - build-blocker-plugin
+     - build-pipeline-plugin
+     - build-timeout
+     - buildtriggerbadge
+     - cobertura
+     - cocoapods-integration
+     - copyartifact
+     - cucumber-testresult-plugin
+     - cucumber-reports
+     - dashboard-view
+     - delivery-pipeline-plugin
+     - disk-usage
+     - durable-task
+     - embeddable-build-status
+     - envinject
+     - Exclusion
+     - findbugs
+     - gitbucket
+     - gradle
+     - htmlpublisher
+     - jacoco
+     - jenkins-jira-issue-updater
+     - jira
+     - locks-and-latches
+     - maven-plugin
+     - multiple-scms
+     - nodejs
+     - parallel-test-executor
+     - role-strategy
+     - scm-sync-configuration
+     - startup-trigger-plugin
+     - tasks
+     - timestamper
+     - warnings
+     - websphere-deployer
+     - workflow-aggregator
+     - ws-cleanup
+     - xcode-plugin
+
 # # Make sure Jenkins starts, then configure Jenkins.
 # - name: Ensure Jenkins is started and runs on startup.
 #   service: name=jenkins state=started enabled=yes
