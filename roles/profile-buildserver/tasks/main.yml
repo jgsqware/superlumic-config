@@ -4,6 +4,7 @@
   homebrew_cask: name={{item}} state=present
   with_items:
     - java
+    - firefox
 
 - name: Install Jenkins
   homebrew: name={{item}} state=present
@@ -29,7 +30,7 @@
 
 - name: Wait Jenkins is started
   command: sleep 10
-  
+
 - name: Install Plugins
   # command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" install-plugin {{ item }}
   command: jenkins-cli -s "http://0.0.0.0:8888/" install-plugin {{ item }}
