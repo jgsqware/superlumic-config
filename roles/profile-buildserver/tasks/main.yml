@@ -17,4 +17,6 @@
   with_items: jenkins_var
 
 - name: Create symlink to jenkins LaunchAgent
-  file: src=/usr/local/opt/jenkins/*.plist dest=~/Library/LaunchAgents state=link force=yes
+  file: src={{ item }} dest=~/Library/LaunchAgents state=link force=yes
+  with_fileglob:
+        - /usr/local/opt/jenkins/*.plist
