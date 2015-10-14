@@ -7,9 +7,11 @@
     - franklinkim.users-oh-my-zsh
   vars:
     users:
-      - oh_my_zsh:
-        theme: robbyrussell
-        plugins: git node brew ansible docker ruby
+      - name: Admin
+        username: admin
+        oh_my_zsh:
+          theme: robbyrussell
+          plugins: git node brew ansible docker ruby
 
   tasks:
       - name: install personal applications
