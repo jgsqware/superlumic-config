@@ -15,6 +15,9 @@
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ansible docker ruby
+    jenkins:
+      - httpListenAddress: 0.0.0.0
+      - httpPort: 8888
 # ---
 #
 # - hosts: 127.0.0.1

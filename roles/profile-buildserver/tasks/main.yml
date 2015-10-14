@@ -9,3 +9,12 @@
   homebrew: name={{item}} state=present
   with_items:
     - jenkins
+
+- name: Configuring jenkins LaunchAgent
+  template: >
+    src=homebrew-mxcl-jenkins-plist.j2
+    dest=~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
+  with_items: jenkins
+
+- name: Create symlink to jenkins LaunchAgent
+  file: src=/usr/local/opt/jenkins/*.plist dest=~/Library/LaunchAgents state=link
