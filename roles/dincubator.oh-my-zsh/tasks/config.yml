@@ -9,3 +9,6 @@
     backup=yes
     mode=0644
   with_items: users
+
+- name: Reload .zshrc
+  shell: source ~/.zshrc
