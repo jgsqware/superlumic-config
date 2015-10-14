@@ -57,41 +57,28 @@
 - name: Wait Jenkins is started
   command: sleep 20
 
-- name: List Jenkins plugins
-  shell: "jenkins-cli http://0.0.0.0:8888 list-plugins | cut -f 1 -d ' '"
-  when: jenkins.plugins is defined
+- name: List plugins
+  shell: jenkins-cli -s http://0.0.0.0:8888 list-plugins | cut -f 1 -d ' '
+  when: plugins is defined
   register: plugins_installed
-  tags:
-    - jenkins
-    - jenkins-update
 
-- name: Install/update Jenkins plugins
-  command: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ item }}
-  when: "plugins_installed.changed and plugins_installed.stdout.find('{{ item }}') == -1"
-  with_items: jenkins.plugins
-  tags:
-    - jenkins
-    - jenkins-update
-
-- name: Restart Jenkins
-  command: jenkins-cli -s "http://0.0.0.0:8888/" restart
+- name: Install/update plugins
+  shell: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ item }}
+  when: plugins_installed.changed and plugins_installed.stdout.find('{{ item }}') == -1
+  with_items: plugins
 
 - name: Wait Jenkins is started
   command: sleep 20
 
-- name: List Jenkins plugins to be updated
-  shell: jenkins-cli -s http://l0.0.0.0:8888 list-plugins | grep ')$' | cut -f 1 -d ' ' | sed ':a;N;$!ba;s/\n/ /g'
+- name: List plugins to be updated
+  shell: jenkins-cli -s http://0.0.0.0:8888 list-plugins | grep ')$' | cut -f 1 -d ' ' | sed ':a;N;$!ba;s/\n/ /g'
   register: plugins_updates
-  tags:
-    - jenkins
-    - jenkins-update
 
-- name: Update Jenkins plugins
-  command: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ plugins_updates.stdout }}
+- name: Update plugins
+  shell: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ item }}
+  with_items: plugins_updates.stdout.split()
   when: plugins_updates.stdout != ''
-  tags:
-    - jenkins
-    - jenkins-update
+  ignore_errors: yes
 
 - name: Restart Jenkins
   command: jenkins-cli -s "http://0.0.0.0:8888/" restart
