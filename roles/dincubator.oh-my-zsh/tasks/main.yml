@@ -1,3 +1,4 @@
 ---
 # tasks file for dincubator.oh-my-zsh
 - include: install.yml
+- include: config.yml
