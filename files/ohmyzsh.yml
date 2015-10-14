@@ -1,12 +1,11 @@
 ---
-- hosts: workstation
+# oh-my-zsh
 
-  tasks:
-    - name: get oh-my-zsh script
-      get_url: url=http://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh dest=/tmp/install-oh-my-zsh.sh
+- name: oh-my-zsh | Install oh-my-zsh
+  get_url: url=http://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh dest=/tmp/install-oh-my-zsh.sh
 
-    - name: change file permission to be executable
-      command: chmod +x /tmp/install-oh-my-zsh.sh
+- name: change file permission to be executable
+  command: chmod +x /tmp/install-oh-my-zsh.sh
 
-    - name: install zsh
-      script: /tmp/install-oh-my-zsh.sh
+- name: install zsh
+  script: /tmp/install-oh-my-zsh.sh
