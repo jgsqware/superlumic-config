@@ -3,7 +3,7 @@
 - name: Configuring oh-my-zsh
   template: >
     src=home-user-zshrc.j2
-    dest=/home/{{ item.username }}/.zshrc
+    dest=/Users/{{ item.username }}/.zshrc
     owner={{ item.username }}
     group={{ item.group if item.group is defined else (users_group if users_group else item.username) }}
     backup=yes
