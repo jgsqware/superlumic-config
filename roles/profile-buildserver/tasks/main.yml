@@ -27,6 +27,9 @@
 - name: Start Jenkins
   command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
 
+- name: Wait Jenkins is started
+  command: sleep 10
+  
 - name: Install Plugins
   # command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" install-plugin {{ item }}
   command: jenkins-cli -s "http://0.0.0.0:8888/" install-plugin {{ item }}
