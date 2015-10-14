@@ -21,6 +21,9 @@
           - atom
           - iterm2
 
+      - name: Update git config url
+        shell: git config --global url."https://".insteadOf git://
+
 
 
 # ---
