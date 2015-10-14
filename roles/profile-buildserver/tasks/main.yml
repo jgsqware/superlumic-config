@@ -28,13 +28,14 @@
   command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
 
 - name: Install Plugins
-  command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" install-plugin {{ item }}
+  # command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" install-plugin {{ item }}
+  command: jenkins-cli -s "http://0.0.0.0:8888/" install-plugin {{ item }}
   with_items:
     - additional-identities-plugin
     - android-emulator
 
 - name: Restart Jenkins
-  command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" restart
+  command: jenkins-cli -s "http://0.0.0.0:8888/" restart
 
 # # Make sure Jenkins starts, then configure Jenkins.
 # - name: Ensure Jenkins is started and runs on startup.

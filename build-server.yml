@@ -18,7 +18,6 @@
     jenkins_var:
       - httpListenAddress: 0.0.0.0
         httpPort: 8888
-    jenkins_hostname: localhost:8888
 # ---
 #
 # - hosts: 127.0.0.1
