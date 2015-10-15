@@ -12,3 +12,4 @@ galaxy_info:
     - system
 dependencies:
   - dincubator.oh-my-zsh
+  - roderik.superlumic-osx-defaults
