@@ -7,7 +7,7 @@
 
 - name: Agreed Xcode License
   shell: xcodebuild -license
-  sudo: yes
+  # sudo: yes
   # become: yes
   # become_user: admin
   # become_method: sudo
