@@ -13,4 +13,7 @@
 - name: Set Environnement Variable for Groovy
   lineinfile: dest=~/.zshrc regexp='export GROOVY_HOME=/usr/local/opt/groovy/libexec' insertafter='^# User configuration' line='export GROOVY_HOME=/usr/local/opt/groovy/libexec' state=present
 
-# - include: jenkins.yml
+- name: Reload Zshrc
+  shell: source ~/.zshrc
+
+- include: jenkins.yml
