@@ -9,4 +9,4 @@
   lineinfile: dest=~/.zshrc regexp='export ANDROID_HOME=/usr/local/opt/android-sdk' insertafter='^# User configuration' line='export ANDROID_HOME=/usr/local/opt/android-sdk' state=present
 
 - name: Install Android SDK version
-  shell: android sdk --no-ui --filter Android-Support-Repository-23.0.1
+  shell: android update sdk --no-ui --filter Android-Support-Repository-23.0.1
