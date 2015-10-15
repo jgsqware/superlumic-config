@@ -24,7 +24,8 @@
         key: 'orientation'
         type: string
         value: bottom
-    - osx_defaults_absent:
+    - dock_icons:
+      - name: Firefox
 # ---
 #
 # - hosts: 127.0.0.1
