@@ -1,6 +1,6 @@
 ---
 - name: Mount $app_name_pretty image
-  command: hdiutil attach $app_name.dmg chdir="/Volumes/$app_name
+  command: hdiutil attach $app_name.dmg chdir="/Volumes/$app_name"
 - name: Remove existing app if present
   file: path=/Applications/$app_name.app state=absent
   when_string: $installer_type == 'app'
