@@ -15,6 +15,11 @@
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ruby
+    osx_defaults_present:
+      - domain: 'com.apple.dock'
+        key: 'autohide'
+        type: boolean
+        value: true
 # ---
 #
 # - hosts: 127.0.0.1
