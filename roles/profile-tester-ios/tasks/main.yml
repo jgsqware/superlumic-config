@@ -2,14 +2,15 @@
 - stat: path=/Applications/Xcode.app
   register: xcode_app
 
-- include: xcode.yml
-  when: not xcode_app.stat.exists
+# - include: xcode.yml
+#   when: not xcode_app.stat.exists
 
 - name: Agreed Xcode License
   shell: xcodebuild -license
-  become: yes
-  become_user: admin
-  become_method: sudo
+  sudo: yes
+  # become: yes
+  # become_user: admin
+  # become_method: sudo
 
 - name: Install Ruby Gem
   gem: name={{item}} state=latest
