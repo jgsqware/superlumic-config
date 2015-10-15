@@ -1,12 +1,12 @@
 ---
 - stat: path=/tmp/Xcode_7.0.1.dmg
-  register: xcode-dmg
+  register: xcode_dmg
 
 - debug: var=xcode-dmg
 
 - name: Test
-  shell: echo Yes
-  when: xcode-dmg.stat.exists
+  command: echo "lol yup"
+  when: xcode_dmg.stat.exists
 
 - name: Set XCode dmg variables
   set_fact:
