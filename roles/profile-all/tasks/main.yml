@@ -19,4 +19,4 @@
   with_items: osx_defaults_present
 
 - osx_defaults: domain="{{ item.domain }}" key="{{ item.key }}" type="{{ item.type }}" value="{{ item.value }}" state=absent
-  with_items: osx_defaults_present
+  with_items: osx_defaults_absent
