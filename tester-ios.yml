@@ -20,6 +20,10 @@
         key: 'autohide'
         type: boolean
         value: true
+      - domain: 'com.apple.dock'
+        key: 'orientation'
+        type: string
+        value: left
 # ---
 #
 # - hosts: 127.0.0.1
