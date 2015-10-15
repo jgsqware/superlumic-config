@@ -10,13 +10,16 @@
   register: xcode_app
 
 - include: dmg.yml
-  when: xcode_app.stat.exists
+  when: not xcode_app.stat.exists
   vars:
     app_name_pretty: "Xcode 7.0.1"
     file_name: Xcode_7.0.1.dmg
     app_name: Xcode
     installer_type: app
 
+- name: Agreed Xcode License
+  shell: sudo xcodebuild -license
+  
 - name: Install Ruby Gem
   gem: name={{item}} state=latest
   with_items:
