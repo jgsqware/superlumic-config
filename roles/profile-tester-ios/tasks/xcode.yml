@@ -15,4 +15,4 @@
     installer_type: app
 
 - name: Agreed Xcode License
-    shell: xcodebuild -license
+  shell: xcodebuild -license
