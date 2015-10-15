@@ -11,7 +11,7 @@
     - groovy
 
 - name: Set Environnement Variable for Groovy
-  lineinfile: dest=~/.zshrc regexp='' insertafter='^# User configuration' line='export GROOVY_HOME=/usr/local/opt/groovy/libexec'
+  lineinfile: dest=~/.zshrc regexp='export GROOVY_HOME=/usr/local/opt/groovy/libexec' insertafter='^# User configuration' line='export GROOVY_HOME=/usr/local/opt/groovy/libexec' state=present
 
 # - include: jenkins.yml
 # # Make sure Jenkins starts, then configure Jenkins.
