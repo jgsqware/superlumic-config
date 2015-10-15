@@ -20,8 +20,9 @@
 
 # - osx_defaults: domain="{{ item.domain }}" key="{{ item.key }}" type="{{ item.type }}" value="{{ item.value }}" state=absent
 #   with_items: osx_defaults_absent
+- osx_defaults: domain="com.apple.dock" key="persistent-apps" type="string" value="/Applications/Firefox.app" state=present
 
-- name: Set Icons to Dock
-  command: defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+# - name: Set Icons to Dock
+#   command: defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 - command: killall -HUP Dock
