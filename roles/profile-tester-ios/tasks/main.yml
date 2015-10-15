@@ -2,12 +2,11 @@
 - stat: path=/Applications/Xcode.app
   register: xcode_app
 
-# - include: xcode.yml
-#   when: not xcode_app.stat.exists
+- include: xcode.yml
+  when: not xcode_app.stat.exists
 
 - name: Agreed Xcode License
   command: xcodebuild -license accept
-  # sudo: yes
   become: yes
   become_method: sudo
   become_pass: admin
