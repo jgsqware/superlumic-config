@@ -1,117 +1,19 @@
 ---
 
-- name: Install Java
+- name: Install Homebrew Cask Applications
   homebrew_cask: name={{item}} state=present
   with_items:
     - java
 
-- name: Install Jenkins
+- name: Install Homebrew Applications
   homebrew: name={{item}} state=present
   with_items:
-    - jenkins
     - groovy
 
-- name: Stop Jenkins
-  command: launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
+- name: Set Environnement Variable for Groovy
+  lineinfile: dest=~/.zshrc regexp='' insertafter=EOF line='export GROOVY_HOME=/usr/local/opt/groovy/libexec'
 
-- name: Configuring jenkins LaunchAgent
-  template: >
-    src=homebrew-mxcl-jenkins-plist.j2
-    dest=~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
-  with_items: jenkins_var
-
-- name: Create symlink to jenkins LaunchAgent
-  file: src={{ item }} dest=~/Library/LaunchAgents/{{ item | basename}} state=link force=yes
-  with_fileglob:
-        - /usr/local/opt/jenkins/*.plist
-
-- name: Start Jenkins
-  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.jenkins.plist
-
-- name: Wait Jenkins is started
-  command: sleep 10
-
-- name: List plugins
-  shell: jenkins-cli -s http://0.0.0.0:8888 list-plugins | cut -f 1 -d ' '
-  when: plugins is defined
-  register: plugins_installed
-
-- name: Install/update plugins
-  shell: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ item }}
-  when: plugins_installed.changed and plugins_installed.stdout.find('{{ item }}') == -1
-  with_items: plugins
-
-- name: Wait Jenkins is started
-  command: sleep 20
-
-- name: List plugins to be updated
-  shell: jenkins-cli -s http://0.0.0.0:8888 list-plugins | grep ')$' | cut -f 1 -d ' ' | sed ':a;N;$!ba;s/\n/ /g'
-  register: plugins_updates
-
-- name: Update plugins
-  shell: jenkins-cli -s http://0.0.0.0:8888 install-plugin {{ item }}
-  with_items: plugins_updates.stdout.split()
-  when: plugins_updates.stdout != ''
-  ignore_errors: yes
-
-- name: Restart Jenkins
-  command: jenkins-cli -s "http://0.0.0.0:8888/" restart
-
-- name: Wait Jenkins is started
-  command: sleep 20
-
-   # command: jenkins-cli -s "http://{{ jenkins_var.httpListenAddress }}:{{ jenkins_var.httpPort }}/" install-plugin {{ item }}
-
-- name: Install Plugins
-  command: jenkins-cli -s "http://0.0.0.0:8888/" install-plugin {{ item }}
-  with_items:
-      - additional-identities-plugin
-      - analysis-core
-      - android-emulator
-      - android-lint
-      - ansicolor
-      - blame-upstream-commiters
-      - build-blocker-plugin
-      - build-pipeline-plugin
-      - build-timeout
-      - buildtriggerbadge
-      - cobertura
-      - cocoapods-integration
-      - copyartifact
-      - cucumber-testresult-plugin
-      - cucumber-reports
-      - dashboard-view
-      - delivery-pipeline-plugin
-      - disk-usage
-      - durable-task
-      - embeddable-build-status
-      - envinject
-      - Exclusion
-      - findbugs
-      - gitbucket
-      - gradle
-      - htmlpublisher
-      - jacoco
-      - jenkins-jira-issue-updater
-      - jira
-      - locks-and-latches
-      - maven-plugin
-      - multiple-scms
-      - nodejs
-      - parallel-test-executor
-      - role-strategy
-      - scm-sync-configuration
-      - startup-trigger-plugin
-      - tasks
-      - timestamper
-      - warnings
-      - websphere-deployer
-      - workflow-aggregator
-      - ws-cleanup
-      - xcode-plugin
-
-- name: Cover2Cover (JaCoCo to Cobertura)
-  git: repo=https://github.com/rix0rrr/cover2cover.git dest=~/.jenkins/cover2cover/
+- include: jenkins.yml
 # # Make sure Jenkins starts, then configure Jenkins.
 # - name: Ensure Jenkins is started and runs on startup.
 #   service: name=jenkins state=started enabled=yes
