@@ -6,7 +6,7 @@
   when: not xcode_app.stat.exists
 
 - name: Agreed Xcode License
-  shell: sudo xcodebuild -license
+  shell: xcodebuild -license
 
 - name: Install Ruby Gem
   gem: name={{item}} state=latest
