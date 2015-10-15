@@ -1,25 +1,13 @@
 ---
-- stat: path=/tmp/Xcode_7.0.1.dmg
-  register: xcode_dmg
-
-- name: Download XCode 7.0.1
-  shell: "curl 'http://adcdownload.apple.com/Developer_Tools/Xcode_7.0.1/Xcode_7.0.1.dmg' -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Cache-Control: max-age=0' -H 'Cookie: ADCDownloadAuth=L2yLyg0pUreAa7z78eStKiy5SpURTv15Rw%2FnLKZm3uqvryXb8obNzLszbgOPRKb1xMXr%2FRFIx4Ne%0D%0AHeV%2FdjFPbibpvwxqNieKP7z90ELe1hrp0lTxX3xcnTH1P%2BzEWQXo96aaB0afMRTFI%2BAN6qUCh2oF%0D%0A8l%2FeQGskAAkXCRziq4SOKgGI%0D%0A' -H 'Connection: keep-alive' --compressed -o /tmp/Xcode_7.0.1.dmg"
-  when: not xcode_dmg.stat.exists
-
 - stat: path=/Applications/Xcode.app
   register: xcode_app
 
-- include: dmg.yml
+- include: xcode.yml
   when: not xcode_app.stat.exists
-  vars:
-    app_name_pretty: "Xcode 7.0.1"
-    file_name: Xcode_7.0.1.dmg
-    app_name: Xcode
-    installer_type: app
 
 - name: Agreed Xcode License
   shell: sudo xcodebuild -license
-  
+
 - name: Install Ruby Gem
   gem: name={{item}} state=latest
   with_items:
