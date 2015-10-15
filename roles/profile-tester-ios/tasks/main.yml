@@ -2,6 +2,8 @@
 - stat: path=/tmp/Xcode_7.0.1.dmg
   register: xcode-dmg
 
+- debug: var=xcode-dmg
+
 - name: Test
   shell: echo Yes
   when: xcode-dmg.stat.exists
