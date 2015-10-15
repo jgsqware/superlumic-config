@@ -8,6 +8,7 @@
 - name: Agreed Xcode License
   shell: xcodebuild -license
   become: yes
+  become_user: admin
   become_method: sudo
 
 - name: Install Ruby Gem
