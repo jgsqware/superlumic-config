@@ -6,11 +6,10 @@
 #   when: not xcode_app.stat.exists
 
 - name: Agreed Xcode License
-  shell: xcodebuild -license
+  command: xcodebuild -license accept
   # sudo: yes
-  # become: yes
-  # become_user: admin
-  # become_method: sudo
+  become: yes
+  become_method: sudo
 
 - name: Install Ruby Gem
   gem: name={{item}} state=latest
