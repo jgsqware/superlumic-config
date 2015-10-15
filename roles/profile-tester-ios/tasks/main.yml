@@ -9,7 +9,7 @@
 - include: dmg.yml
   vars:
     app_name_pretty: "Xcode 7.0.1"
-    file_name: Xcode
+    file_name: Xcode_7.0.1.dmg
     app_name: Xcode
     installer_type: app
 
