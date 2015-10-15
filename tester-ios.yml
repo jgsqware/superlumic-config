@@ -24,6 +24,7 @@
         key: 'orientation'
         type: string
         value: bottom
+    - osx_defaults_absent:
 # ---
 #
 # - hosts: 127.0.0.1
