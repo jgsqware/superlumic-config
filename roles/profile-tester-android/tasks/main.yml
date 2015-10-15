@@ -1,0 +1,8 @@
+---
+
+- name: Install Homebrew Cask Applications
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - sublime-text
+
+# - include: jenkins.yml

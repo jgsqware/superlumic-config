@@ -3,6 +3,8 @@
 - src: https://github.com/superlumic/ansible-role-homebrew.git
   name: roderik.superlumic-homebrew
 
+# - src: https://github.com/superlumic/ansible-role-sublimetext.git
+#    name: roderik.superlumic-sublimetext
 
 # - src: https://github.com/superlumic/ansible-role-osx-defaults.git
 #   name: roderik.superlumic-osx-defaults
@@ -19,8 +21,7 @@
 # - src: https://github.com/superlumic/ansible-role-php.git
 #   name: roderik.superlumic-php
 #
-# - src: https://github.com/superlumic/ansible-role-sublimetext.git
-#   name: roderik.superlumic-sublimetext
+
 #
 # - src: https://github.com/superlumic/ansible-role-node.git
 #   name: roderik.superlumic-node

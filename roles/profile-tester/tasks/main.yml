@@ -1,0 +1,9 @@
+---
+
+- name: Install Homebrew Applications
+  homebrew: name={{item}} state=present
+  with_items:
+    - android-sdk
+
+- name: Set Environnement Variable for Android
+  lineinfile: dest=~/.zshrc regexp='export ANDROID_HOME=/usr/local/opt/android-sdk' insertafter='^# User configuration' line='export ANDROID_HOME=/usr/local/opt/android-sdk' state=present
