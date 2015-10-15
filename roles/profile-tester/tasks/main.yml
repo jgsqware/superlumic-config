@@ -9,7 +9,7 @@
   npm: name=n global=true
 
 - name: Install PM2 - Process Manager for Node.js
-  npm: {{item}} global=true
+  npm: name={{item}} global=true
   with_items:
     - pm2
     - node-inspector
@@ -21,6 +21,6 @@
 #Check access to http://localhost:9000
 
 - name: Install NPM Package
-  npm: {{item}} global=true
+  npm: name={{item}} global=true
   with_items:
     - bower
