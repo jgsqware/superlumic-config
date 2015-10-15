@@ -3,9 +3,9 @@
   command: hdiutil attach {{ app_name }}.dmg chdir="/tmp/"
 - name: Remove existing app if present
   file: path=/Applications/{{ app_name }}.app state=absent
-  when: "{{ installer_type }}" == 'app'
+  when: installer_type == 'app'
 - name: Copy {{ app_name_pretty }} app to Applications directory
   command: cp -R "/Volumes/{{ app_name }}/{{ app_name }}.app" /Applications
-  when: "{{ installer_type }}" == 'app'
+  when: installer_type == 'app'
 - name: Unmount {{ app_name_pretty }} image
   command: hdiutil detach "/Volumes/{{ app_name }}"
