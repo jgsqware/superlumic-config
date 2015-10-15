@@ -1,38 +1,39 @@
 ---
 
-- name: Install Homebrew Applications
-  homebrew: name={{item}} state=present
-  with_items:
-    - android-sdk
-    - genymotion
-    - gradle
-  show_output: true
+# - name: Install Homebrew Applications
+#   homebrew: name={{item}} state=present
+#   with_items:
+#     - android-sdk
+#     - genymotion
+#     - gradle
+#   show_output: true
 
 - name: Set Environnement Variable for Android
   lineinfile: dest=~/.zshrc regexp='export ANDROID_HOME=/usr/local/opt/android-sdk' insertafter='^# User configuration' line='export ANDROID_HOME=/usr/local/opt/android-sdk' state=present
-
-- name: Reload Zshrc
-  shell: source ~/.zshrc
-
-- name: Install Android SDK version
-  shell: android update sdk --no-ui --filter {{ item }}
-  with_items:
-    - platform-tools
-    - build-tools-23.0.1
-    - android-19
-    - extra-android-m2repository
-    - extra-android-support
-    - extra-intel-Hardware_Accelerated_Execution_Manager
   show_output: true
 
-- name: Set Environnement Variable for Genymotion
-  lineinfile: dest=~/.zshrc regexp='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' insertbefore='^# export MANPATH="/usr/local/man:$MANPATH"' line='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' state=present
-
-- name: Reload Zshrc
-  shell: source ~/.zshrc
-
-- name: Register Genymotion
-  shell: gmtool config username bnppfdevops@gmail.com password Fortis01!
-
-- name: Install Gem calabash-android
-  gem: name=calabash-android state=latest
+# - name: Reload Zshrc
+#   shell: source ~/.zshrc
+#
+# - name: Install Android SDK version
+#   shell: android update sdk --no-ui --filter {{ item }}
+#   with_items:
+#     - platform-tools
+#     - build-tools-23.0.1
+#     - android-19
+#     - extra-android-m2repository
+#     - extra-android-support
+#     - extra-intel-Hardware_Accelerated_Execution_Manager
+#   show_output: true
+#
+# - name: Set Environnement Variable for Genymotion
+#   lineinfile: dest=~/.zshrc regexp='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' insertbefore='^# export MANPATH="/usr/local/man:$MANPATH"' line='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' state=present
+#
+# - name: Reload Zshrc
+#   shell: source ~/.zshrc
+#
+# - name: Register Genymotion
+#   shell: gmtool config username bnppfdevops@gmail.com password Fortis01!
+#
+# - name: Install Gem calabash-android
+#   gem: name=calabash-android state=latest
