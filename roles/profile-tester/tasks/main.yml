@@ -8,7 +8,7 @@
     - gradle
 
 - name: Install Homebrew Cask Applications
-  homebrew: name={{item}} state=present
+  homebrew_cask: name={{item}} state=present
   with_items:
     - genymotion
 
