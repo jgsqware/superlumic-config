@@ -31,7 +31,7 @@
       - domain: 'com.apple.dock'
         key: 'tilesize'
         type: float
-        value: 70
+        value: 40
       - domain: 'com.apple.desktopservices'
         key: 'DSDontWriteNetworkStores'
         type: boolean
@@ -49,5 +49,5 @@
 
     - dock_folders:
       - path: ~/Downloads
-      - view: list
-      - display: folder
+        view: list
+        display: folder
