@@ -23,9 +23,9 @@
 #   with_items: osx_defaults_absent
 
 - name: Set Icons to Dock
-  command: dockutil --add {{item}} --allhomes
+  command: dockutil --add "{{item}}" --allhomes
   with_items: dock_icons
 
 - name: Remove Icons from Dock
-  command: dockutil --remove {{item}} --allhomes
+  command: dockutil --remove "{{item}}" --allhomes
   with_items: dock_icons_to_delete

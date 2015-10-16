@@ -25,11 +25,11 @@
         type: string
         value: bottom
     - dock_icons:
-      - name: Firefox
+      - Firefox
     - dock_icons_to_delete:
-      - name: Mail
-      - name: Contacts
-      - name: Calendar
+      - Mail
+      - Contacts
+      - Calendar
 # ---
 #
 # - hosts: 127.0.0.1
