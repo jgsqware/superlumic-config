@@ -17,7 +17,7 @@
     - pm2-web
 
 - name: Run PM2
-  command: /usr/local/bin/pm2 start /usr/local/bin/pm2-web
+  command: /usr/local/bin/pm2 start -f /usr/local/bin/pm2-web
 
 #Check access to http://localhost:9000
 
