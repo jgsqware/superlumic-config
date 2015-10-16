@@ -6,6 +6,7 @@
     - atom
     - iterm2
     - google-chrome
+    - sourcetree
 
 - name: install general applications with brew
   homebrew: name={{item}} state=present

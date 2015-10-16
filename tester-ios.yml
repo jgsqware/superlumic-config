@@ -38,13 +38,13 @@
         value: true
 
     - dock_icons:
-      - Finder
       - Safari
       - Google Chrome
       - iTerm
       - Atom
       - Sublime Text 2
       - XCode
+      - SourceTree
       - System Preferences
 
     - dock_folders:
