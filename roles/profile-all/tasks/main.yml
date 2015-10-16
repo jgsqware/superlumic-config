@@ -11,6 +11,7 @@
   homebrew: name={{item}} state=present
   with_items:
     - wget
+    - dockutil
 
 - name: Update git config url
   shell: git config --global url."https://".insteadOf git://
@@ -22,6 +23,9 @@
 #   with_items: osx_defaults_absent
 
 - name: Set Icons to Dock
-  command: defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/{{item.name}}.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+  command: dockutil --add {{item}} --allhomes
   with_items: dock_icons
-- command: killall -HUP Dock
+
+- name: Remove Icons from Dock
+  command: dockutil --remove {{item}} --allhomes
+  with_items: dock_icons_to_delete

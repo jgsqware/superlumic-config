@@ -26,6 +26,10 @@
         value: bottom
     - dock_icons:
       - name: Firefox
+    - dock_icons_to_delete:
+      - name: Mail
+      - name: Contacts
+      - name: Calendar
 # ---
 #
 # - hosts: 127.0.0.1
