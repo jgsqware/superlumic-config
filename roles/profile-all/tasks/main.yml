@@ -17,15 +17,16 @@
   shell: git config --global url."https://".insteadOf git://
 
 - osx_defaults: domain="{{ item.domain }}" key="{{ item.key }}" type="{{ item.type }}" value="{{ item.value }}" state=present
-  with_items: osx_defaults_present
+  with_items: osx_defaults
 
-# - osx_defaults: domain="{{ item.domain }}" key="{{ item.key }}" type="{{ item.type }}" value="{{ item.value }}" state=absent
-#   with_items: osx_defaults_absent
+- name: Empty the Dock
+  command: dockutil --remove all
 
 - name: Set Icons to Dock
+  command: dockutil --remove all
   command: dockutil --add "/Applications/{{item}}.app" --allhomes
   with_items: dock_icons
 
-- name: Remove Icons from Dock
-  command: dockutil --remove "{{item}}" --allhomes
-  with_items: dock_icons_to_delete
+- name: Set Folders to Dock
+  command: dockutil --add '{{item.path}}' --view {{item.view}} --display {{item.display}} --allhomes
+  with_items: dock_folders

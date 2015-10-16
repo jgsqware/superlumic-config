@@ -15,7 +15,7 @@
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ruby
-    - osx_defaults_present:
+    - osx_defaults:
       - domain: 'com.apple.dock'
         key: 'autohide'
         type: boolean
@@ -24,28 +24,30 @@
         key: 'orientation'
         type: string
         value: bottom
-        
+      - domain: 'com.apple.dock'
+        key: 'minimize-to-application'
+        type: integer
+        value: 1
+      - domain: 'com.apple.dock'
+        key: 'tilesize'
+        type: float
+        value: 70
+      - domain: 'com.apple.desktopservices'
+        key: 'DSDontWriteNetworkStores'
+        type: boolean
+        value: true
+
     - dock_icons:
+      - Finder
+      - Safari
       - Google Chrome
       - iTerm
       - Atom
       - Sublime Text 2
       - XCode
+      - System Preferences
 
-    - dock_icons_to_delete:
-      - Launchpad
-      - Mail
-      - Contacts
-      - Calendar
-      - Notes
-      - Reminders
-      - Maps
-      - Photos
-      - Messages
-      - FaceTime
-      - Pages
-      - Numbers
-      - Keynote
-      - iTunes
-      - iBooks
-      - App Store
+    - dock_folders:
+      - path: ~/Downloads
+      - view: list
+      - display: folder
