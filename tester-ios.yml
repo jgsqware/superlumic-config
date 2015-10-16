@@ -24,14 +24,16 @@
         key: 'orientation'
         type: string
         value: bottom
+        
     - dock_icons:
-      - Chrome
+      - Google Chrome
       - iTerm
       - Atom
       - Sublime Text 2
       - XCode
 
     - dock_icons_to_delete:
+      - Launchpad
       - Mail
       - Contacts
       - Calendar
@@ -40,10 +42,10 @@
       - Maps
       - Photos
       - Messages
-      - Facetime
+      - FaceTime
       - Pages
       - Numbers
       - Keynote
-      - Itunes
+      - iTunes
       - iBooks
       - App Store
