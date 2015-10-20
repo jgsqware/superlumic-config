@@ -8,13 +8,28 @@
     - profile-tester-android
 
   vars:
-    users:
+    - users:
       - name: Admin
         username: admin
         group: staff
         oh_my_zsh:
           theme: robbyrussell
           plugins: git node brew ruby
+  
+    - dock_icons:
+        - Safari
+        - Google Chrome
+        - iTerm
+        - Atom
+        - Sublime Text 2
+        - SourceTree
+        - System Preferences
+        - Genymotion
+  
+      - dock_folders:
+        - path: ~/Downloads
+          view: list
+          display: folder
 # ---
 #
 # - hosts: 127.0.0.1
