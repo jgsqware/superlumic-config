@@ -17,6 +17,26 @@
           plugins: git node brew ruby
     
     - osx_defaults:
+      - domain: 'com.apple.dock'
+        key: 'autohide'
+        type: boolean
+        value: true
+      - domain: 'com.apple.dock'
+        key: 'orientation'
+        type: string
+        value: bottom
+      - domain: 'com.apple.dock'
+        key: 'minimize-to-application'
+        type: integer
+        value: 1
+      - domain: 'com.apple.dock'
+        key: 'tilesize'
+        type: float
+        value: 40
+      - domain: 'com.apple.desktopservices'
+        key: 'DSDontWriteNetworkStores'
+        type: boolean
+        value: true
   
     - dock_icons:
         - Safari
