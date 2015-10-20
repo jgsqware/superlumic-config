@@ -5,12 +5,12 @@
   with_items:
     - android-sdk
     - gradle
-    - java
 
 - name: Install Homebrew Cask Applications
   homebrew_cask: name={{item}} state=present
   with_items:
     - genymotion
+    - java
 
 - name: Set Environnement Variable for Android
   lineinfile: dest=~/.zshrc regexp='export ANDROID_HOME=/usr/local/opt/android-sdk' insertafter='^# User configuration' line='export ANDROID_HOME=/usr/local/opt/android-sdk' state=present
