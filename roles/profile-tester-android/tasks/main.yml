@@ -5,6 +5,7 @@
   with_items:
     - android-sdk
     - gradle
+    - java
 
 - name: Install Homebrew Cask Applications
   homebrew_cask: name={{item}} state=present
