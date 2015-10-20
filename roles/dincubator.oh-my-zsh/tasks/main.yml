@@ -1,6 +1,7 @@
 ---
 # tasks file for dincubator.oh-my-zsh
-- stat: path=~/.oh-my-zsh
+- name: Check if Oh-My-Zsh exists
+  stat: path=~/.oh-my-zsh
   register: ohmyzsh
 
 - include: install.yml
