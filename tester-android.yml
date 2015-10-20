@@ -26,10 +26,10 @@
         - System Preferences
         - Genymotion
   
-      - dock_folders:
-        - path: ~/Downloads
-          view: list
-          display: folder
+    - dock_folders:
+      - path: ~/Downloads
+        view: list
+        display: folder
 # ---
 #
 # - hosts: 127.0.0.1
