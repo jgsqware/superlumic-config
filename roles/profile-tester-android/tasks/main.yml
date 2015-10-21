@@ -12,6 +12,8 @@
     - genymotion
     - java
 
+
+    
 - name: Set Environnement Variable for Android
   lineinfile: dest=~/.zshrc regexp='export ANDROID_HOME=/usr/local/opt/android-sdk' insertafter='^# User configuration' line='export ANDROID_HOME=/usr/local/opt/android-sdk' state=present
 
@@ -28,6 +30,16 @@
     - extra-android-support
     - extra-intel-Hardware_Accelerated_Execution_Manager
 
+- name: add {{item.name}} to path
+    lineinfile: >
+    dest=/etc/environment
+    state=present
+    backrefs=yes
+    regexp='PATH=(["]*)((?!.*?{{item.path}}).*?)(["]*)$'
+    line="PATH=\1\2:{{item.path}}\3"
+  with_items:
+    - name: Genymotion 
+      path: /Applications/Genymotion.app/Contents/MacOS
 - name: Set Environnement Variable for Genymotion
   lineinfile: dest=~/.zshrc regexp='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' insertbefore='^# export MANPATH="/usr/local/man:$MANPATH"' line='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' state=present
 
