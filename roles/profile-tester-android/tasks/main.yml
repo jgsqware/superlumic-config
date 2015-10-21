@@ -32,7 +32,7 @@
 
 - name: add {{item.name}} to path
   lineinfile: >
-    dest=/etc/environment
+    dest=~/.zshrc
     state=present
     backrefs=yes
     regexp='PATH=(["]*)((?!.*?{{item.path}}).*?)(["]*)$'
