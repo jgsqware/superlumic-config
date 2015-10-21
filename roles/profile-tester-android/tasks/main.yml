@@ -31,7 +31,7 @@
     - extra-intel-Hardware_Accelerated_Execution_Manager
 
 - name: add {{item.name}} to path
-    lineinfile: >
+  lineinfile: >
     dest=/etc/environment
     state=present
     backrefs=yes
@@ -40,6 +40,7 @@
   with_items:
     - name: Genymotion 
       path: /Applications/Genymotion.app/Contents/MacOS
+      
 - name: Set Environnement Variable for Genymotion
   lineinfile: dest=~/.zshrc regexp='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' insertbefore='^# export MANPATH="/usr/local/man:$MANPATH"' line='export PATH=/Users/admin/Applications/Genymotion.app/Contents/MacOS:$PATH' state=present
 
