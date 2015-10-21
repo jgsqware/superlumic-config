@@ -6,6 +6,7 @@
 
   - Copy Xcode 7 to */tmp*
   - Setup Network environment by running
+  
     ```bash
       sudo curl http://bnppfp2.ddns.net:9999/root/mac-os-dual-network/blob/master/update-ipconfig.sh?raw=true -o /etc/update-ipconfig.sh
     ```
@@ -32,15 +33,15 @@ Change the USER_PROFILE variable with:
 ## Fixes and features on the way
 
 ### Features
-  - Install *XCode Commandline tool* from */tmp* if exists
-  - Add *Network configuration script* in Superlumic script
-  - Add *Oh-My-Zsh* in Superlumic script
-  - Add brew and cask installation in Superlumic script
-  - Add bookmarks in browsers
-  - Cache Brew & Cask installation from */Library/Caches/Homebrew* & */Library/Caches/Homebrew/Casks*
-  - Add tester-ios-and-android profile
-  - Finish the build-server profile
-  - Add devops-team profile
+  - Install **XCode Commandline tool** from */tmp* if exists
+  - Add **Network configuration script** in Superlumic script
+  - Add **Oh-My-Zsh** in Superlumic script
+  - Add **brew** and **cask** installation in Superlumic script
+  - Add **bookmarks** in browsers
+  - **Cache Brew & Cask** installation from */Library/Caches/Homebrew* & */Library/Caches/Homebrew/Casks*
+  - Add **tester-ios-and-android** profile
+  - Finish the **build-server** profile
+  - Add **devops-team** profile
 
 ### Fixes
   - `sudo` not working for *Agreed Xcode License* task in */roles/profile-tester-ios/xcode.yml*
