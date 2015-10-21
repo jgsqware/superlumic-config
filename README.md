@@ -20,8 +20,13 @@
 
 ## Run our superlumic rocket
 
+Change the USER_PROFILE variable with:
+
+  - tester-ios
+  - tester-android
+
 ```bash
-  curl -s <PATH_TO_SUPERLUMIC_SCRIPT> | bash -s <PATH_TO_SUPERLUMIC_REPO> -u tester-ios|tester-android
+  curl -s http://bnppfp2.ddns.net:9999/devops-tools/superlumic-ansible/blob/master/superlumic.sh?raw=true | bash -s http://bnppfp2.ddns.net:9999/git/devops-tools/superlumic-ansible.git -u <USER_PROFILE>
 ```
 
 ## Fixes and features on the way
