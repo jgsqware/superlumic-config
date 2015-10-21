@@ -39,6 +39,7 @@
   
 - name: Register Genymotion
   shell: 'echo $SHELL && source ~/.zshrc && gmtool config username bnppfdevops@gmail.com password Fortis01!'
+  executable=/bin/zsh
 
 - name: Install Gem calabash-android
   gem: name=calabash-android state=latest
