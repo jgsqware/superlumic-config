@@ -34,8 +34,11 @@
 - name: Reload Zshrc
   shell: source ~/.zshrc
 
+- name: zsh facts
+  shell: 'echo $SHELL'
+  
 - name: Register Genymotion
-  command: source ~/.zshrc && gmtool config username bnppfdevops@gmail.com password Fortis01!
+  shell: 'echo $SHELL && source ~/.zshrc && gmtool config username bnppfdevops@gmail.com password Fortis01!'
 
 - name: Install Gem calabash-android
   gem: name=calabash-android state=latest
